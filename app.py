@@ -113,4 +113,4 @@ def awardMoney():
     return responseMake(isSuccess)
 
 GH2API.loadFilesIntoMemory()
-app.run(host="0.0.0.0",port=7777)
+app.run(host="0.0.0.0",port=7770)
