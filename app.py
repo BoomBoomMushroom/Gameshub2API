@@ -89,7 +89,7 @@ def deleteAccount():
     isSuccess = GH2API.deleteAccount(token_query)
     return responseMake(isSuccess)
 
-@app.route("invalidateToken")
+@app.route("/invalidateToken")
 def invalidateToken():
     try:
         token_query = str(request.args.get('token'))
@@ -99,7 +99,7 @@ def invalidateToken():
     isSuccess = invalidateToken(token_query)
     return responseMake(isSuccess)
 
-@app.route("awardMoney")
+@app.route("/awardMoney")
 def awardMoney():
     try:
         token_query = str(request.args.get('token'))
