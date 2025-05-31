@@ -236,7 +236,7 @@ def addTransaction(uuid, currency, amount, source, description, epoch):
     return True
 
 def getShopItems():
-    with open("./api_data/shopItems") as f:
+    with open("./api_data/shopItems.json") as f:
         return f.read()
 
 def buyShopItem(token, itemId):
