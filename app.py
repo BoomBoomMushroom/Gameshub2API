@@ -132,7 +132,7 @@ def getCurrentSeason():
     return responseMake( GH2API.getCurrentSeason() )
 
 @app.route("/getCurrentSeasonBattlepass")
-def getCurrentSeason():
+def getCurrentSeasonBattlepass():
     return responseMake( GH2API.getCurrentSeasonBattlepass() )
 
 @app.route("/awardXP")
