@@ -279,14 +279,15 @@ def getCurrentSeasonBattlepass():
         return json.load(f)
 
 def loadFilesFromRepo():
+    global accounts, tokens
     accountsData = GH2DataRepo.readFile("accounts.json")
     if accountsData != None:
-        accountsData = json.loads(accountsData)
+        accounts = json.loads(accountsData)
         saveFilesIntoMemory(doAccounts=True)
     
     tokensData = GH2DataRepo.readFile("tokens.json")
     if tokensData != None:
-        tokensData = json.loads(tokensData)
+        tokens = json.loads(tokensData)
         saveFilesIntoMemory(doTokens=True)
 
 def loadFilesIntoMemory():
