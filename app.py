@@ -112,5 +112,63 @@ def awardMoney():
     isSuccess = GH2API.awardMoney(token_query, amount_query, source_query, description_query)
     return responseMake(isSuccess)
 
+@app.route("/getShopItems")
+def getShopItems():
+    return responseMake( getShopItems() )
+
+@app.route("/buyShopItem")
+def buyShopItem():
+    try:
+        token_query = str(request.args.get('token'))
+        itemId_query = int(request.args.get('itemId'))
+    except:
+        flask.abort(400)
+
+    isSuccess = GH2API.buyShopItem(token_query, itemId_query)
+    return responseMake(isSuccess)
+    
+@app.route("/getCurrentSeason")
+def getCurrentSeason():
+    return responseMake( GH2API.getCurrentSeason() )
+
+@app.route("/getCurrentSeasonBattlepass")
+def getCurrentSeason():
+    return responseMake( GH2API.getCurrentSeasonBattlepass() )
+
+@app.route("/awardXP")
+def awardXP():
+    try:
+        token_query = str(request.args.get('token'))
+        amount_query = int(request.args.get('amount'))
+        source_query = str(request.args.get('source'))
+        description_query = str(request.args.get('description'))
+    except:
+        flask.abort(400)
+    
+    isSuccess = GH2API.awardXP(token_query, amount_query, source_query, description_query)
+    return responseMake(isSuccess)
+
+@app.route("/restart")
+def restart():
+    try:
+        totp_code_query = str(request.args.get('code'))
+    except:
+        flask.abort(400)
+    
+    if totp_code_query != GH2API.getAdminTOTPCode(): return responseMake("Wrong Code!")
+    exit()
+
+@app.route("/pullAccountsAndTokensFromRepo")
+def pullAccountsAndTokensFromRepo():
+    try:
+        totp_code_query = str(request.args.get('code'))
+    except:
+        flask.abort(400)
+    
+    if totp_code_query != GH2API.getAdminTOTPCode(): return responseMake("Wrong Code!")
+    
+    GH2API.loadFilesFromRepo()
+    return responseMake(True)
+
 GH2API.loadFilesIntoMemory()
 app.run(host="0.0.0.0",port=7770)
