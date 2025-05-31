@@ -114,7 +114,7 @@ def awardMoney():
 
 @app.route("/getShopItems")
 def getShopItems():
-    return responseMake( getShopItems() )
+    return responseMake( GH2API.getShopItems() )
 
 @app.route("/buyShopItem")
 def buyShopItem():
