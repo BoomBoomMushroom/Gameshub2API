@@ -128,7 +128,7 @@ def createAccount(username: str, password: str, email: str=""):
         uuid=UUID,
         email=email,
         isBanned=False,
-        isAdmin=True,
+        isAdmin=False,
         creationEpoch=epochNow,
         pfp=f"https://api.dicebear.com/9.x/identicon/png?seed={username}",
         
@@ -186,6 +186,7 @@ def deleteAccount(token):
     del tokens[token]
     
     saveFilesIntoMemory(doAccounts=True, doTokens=True)
+    return True
 
 def updateAccountGameData(UUID, gameName, newData):
     # Try to turn the data into a JSON object if it is possible / if the game want us to
