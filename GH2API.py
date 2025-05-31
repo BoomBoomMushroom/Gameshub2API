@@ -293,11 +293,13 @@ def loadFilesIntoMemory():
     global accounts, tokens
     with open("./api_data/accounts.json", "r") as accountsFile:
         accounts = json.load(accountsFile)
-        GH2DataRepo.updateFile(accountsFile.read(), "accounts.json", f"Updating accounts.json {getEpoch()}")
+        accountsFileData = json.dumps(accounts, indent=4)
+        GH2DataRepo.updateFile(accountsFileData, "accounts.json", f"Updating accounts.json {getEpoch()}")
     
     with open("./api_data/tokens.json", "r") as tokensFile:
         tokens = json.load(tokensFile)
-        GH2DataRepo.updateFile(tokensFile.read(), "tokens.json", f"Updating tokens.json {getEpoch()}")
+        tokensFileData = json.dumps(tokens, indent=4)
+        GH2DataRepo.updateFile(tokensFileData, "tokens.json", f"Updating tokens.json {getEpoch()}")
 
 def saveFilesIntoMemory(doAccounts=False, doTokens=False):
     global accounts, tokens
